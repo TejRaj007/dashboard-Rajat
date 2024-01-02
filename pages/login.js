@@ -33,7 +33,7 @@ export default function LoginScreen() {
       });
       if (result.error) {
         toast.error(result.error);
-      }
+      }else{  router.replace("/dashboard");}
     } catch (err) {
       toast.error(getError(err));
     }
@@ -79,6 +79,10 @@ export default function LoginScreen() {
           {errors.password && (
             <div className="text-red-500 ">{errors.password.message}</div>
           )}
+        </div>
+        <div className="mb-4 ">
+         
+          <Link href={`/forget-password?redirect=${redirect || '/'}`}> Forget Password? &nbsp;</Link>
         </div>
         <div className="mb-4 ">
           <button className="primary-button">Login</button>

@@ -1,16 +1,52 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema(
+const { Schema } = mongoose;
+
+const userSchema = new Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    isAdmin: { type: Boolean, required: true, default: false },
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: false,
+    },
+    resetToken: {
+      type: String,
+      required: false,
+    },
+    resetTokenExpiry:{
+      type: Date,
+      required: false,
+    },
+    bio: {
+      type: String,
+      required: false,
+    },
+    phone_number: {
+      type: String,
+      required: false,
+    },
+    address: {
+      type: String,
+      required: false,
+    },
+    city: {
+      type: String,
+      required: false,
+    },
+    state: {
+      type: String,
+      required: false,
+    },
+    image: {
+      type: String, // Assuming storing the image path as a string
+      required: false,
+    },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
-const User = mongoose.models.User || mongoose.model('User', userSchema);
-export default User;
+export default mongoose.models?.User || mongoose.model("User", userSchema);

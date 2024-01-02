@@ -6,10 +6,16 @@ async function handler(req, res) {
   if (req.method !== 'POST') {
     return;
   }
-  const { name, email, password } = req.body;
+  const { name, email, password,bio, phone_number, address, country, city, state } = req.body;
   if (
     !name ||
     !email ||
+    !bio ||
+    !phone_number ||
+    !address ||
+    !country ||
+    !state ||
+    !city ||
     !email.includes('@') ||
     !password ||
     password.trim().length < 5
